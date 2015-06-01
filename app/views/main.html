@@ -1,0 +1,116 @@
+<div class="grid">
+
+    <div class="grid__col9">
+        <div class="card grid">
+            <div class="grid__col11">
+                <lx-search-filter model="search" filter-width="100%" placeholder="Search"></lx-search-filter>
+            </div>
+            <div class="grid__col1">
+                <a class="btn btn--m btn--blue btn--fab" ng-href="#/new"lx-ripple ><i
+                        class="mdi mdi--add"></i></a>
+            </div>
+
+        </div>
+
+
+        <div  class="data-table-container album-list card">
+            <div class="card__top" ng-hide="filtered.length">
+                <strong class="card-title">Pas de résultats</strong>
+                <span class="card-subtitle">Aucun album ne correspond à cette recherche</span>
+            </div>
+
+            <table ng-show="filtered.length" class="data-table">
+                <thead>
+                <tr>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='titre'; order=!order">titre&nbsp;
+                                <i class="fa" ng-class="{'fa-sort-asc':orderBy=='titre', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='artiste'; order=!order">artiste&nbsp;
+                                <i class="fa" ng-class="{'fa-sort-asc':orderBy=='artiste', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='date'; order=!order">date&nbsp;
+                                <i class="fa" ng-class="{'fa-sort-asc':orderBy=='date', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='genre'; order=!order">genre&nbsp;
+                                <i class="fa" ng-class="{'fa-sort-asc':orderBy=='genre', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='description'; order=!order">description&nbsp;
+                                <i class="fa"
+                                   ng-class="{'fa-sort-asc':orderBy=='description', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                    <th>
+                        <nobr>
+                            <button class="btn btn--s btn--blue btn--flat" lx-ripple
+                                    ng-click="orderBy='duration'; order=!order">Durée&nbsp;
+                                <i class="fa"
+                                   ng-class="{'fa-sort-asc':orderBy=='duration', 'fa-rotate-180': order}"></i>
+                            </button>
+                        </nobr>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+
+                <tr class="data-table__clickable-row"
+                    ng-repeat="album in filtered = (mainCtrl.albums | filter:search | tags:mainCtrl.tag | orderBy:orderBy:order)"
+                    ng-click="mainCtrl.go(album)">
+                    <td>{{album.titre }}</td>
+                    <td>{{album.artiste}}</td>
+                    <td>{{album.date | amDateFormat:'DD/MM/YY'}}</td>
+                    <td>{{album.genre}}</td>
+                    <td>{{album.description |truncate:10}}</td>
+                    <td>{{album.duration}}</td>
+                    <td> <button class="btn btn--s btn--red btn--fab" lx-ripple ng-click="mainCtrl.suppr(album)"><i class="fa fa-times"></i></button></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="card grid">
+            <div class="card__content card__content">
+
+                <div class="paragraph">
+                    <p class="fs-subhead">
+                        Total: {{filtered.length }} &nbsp;<i class="fa fa-ellipsis-v"></i>&nbsp;  Total Duration: {{filtered | pluck:'duration' | sum| number:0}} &nbsp;<i class="fa fa-ellipsis-v"></i>&nbsp;  Mean Duration: {{filtered | pluck:'duration' | avg | number:0}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="album-detail grid__col3" style="margin-top: 5%;" >
+        <detail ng-show="mainCtrl.detail" disc="mainCtrl.detail"></detail>
+    <tags filtered="mainCtrl.albums" selected="mainCtrl.tag"></tags>
+    </div>
+</div>
+

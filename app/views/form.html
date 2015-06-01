@@ -1,0 +1,51 @@
+<div class="grid">
+
+<div class="card" style="padding:5%;">
+    <h1>Disque</h1>
+    <form name="discForm" ng-submit="ctrl.action(ctrl.disc)">
+        <lx-text-field label="Titre" error="discForm.titre.$touched && discForm.titre.$invalid">
+            <input ng-required="true" maxlength="50" name="titre" type="text" ng-model="ctrl.disc.titre">
+            <ul class="form-error" ng-if="discForm.titre.$touched && discForm.titre.$error.required">
+                <li>Le champs titre est obligatoire</li>
+            </ul>
+            <ul class="form-error" ng-if="discForm.titre.$touched && discForm.titre.$error.maxLength">
+                <li>Le champs titre doit contenir au maximum 50 caractères</li>
+            </ul>
+        </lx-text-field>
+
+        <lx-text-field label="Artiste" error="discForm.artiste.$touched && discForm.artiste.$invalid">
+            <input name="artiste" ng-required="true" type="text" ng-model="ctrl.disc.artiste" >
+            <ul class="form-error" ng-if="discForm.titre.$touched && discForm.artiste.$error.required">
+                <li>Le champs titre est obligatoire</li>
+            </ul>
+        </lx-text-field>
+
+        <lx-date-picker model="ctrl.disc.date" label="Pick a date"></lx-date-picker>
+
+        <lx-select ng-model="ctrl.disc.genre" placeholder="Genre" choices="['pop', 'rock', 'electro', 'disco', 'funk']" floating-label>
+            <lx-select-selected>
+                {{ $selected}}
+            </lx-select-selected>
+            <lx-select-choices>
+                {{ $choice}}
+            </lx-select-choices>
+        </lx-select>
+
+        <lx-text-field label="Description" type="area" model="ctrl.disc.description">
+            <textarea ng-model="ctrl.disc.description"></textarea>
+        </lx-text-field>
+
+        <lx-text-field label="Durée"  model="crtl.disc.duration">
+            <textarea type="number" ng-model="ctrl.disc.duration"></textarea>
+        </lx-text-field>
+
+
+        <button  type="submit" class="btn btn--m btn--blue btn--raised" lx-ripple>OK</button>
+        <button type="button" class="btn btn--m btn--red btn--raised" ng-click ="ctrl.abort()"  lx-ripple>Annuler </button>
+
+    </form>
+
+</div>
+
+</div>
+

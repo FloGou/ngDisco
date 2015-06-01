@@ -1,0 +1,28 @@
+    <div class="card" style="margin-top:0; margin-bottom:0;" >
+        <div class="card__top card__top--img">
+            <img ng-src="{{disc.cover}}">
+            <strong class="card-title">{{disc.titre}}</strong>
+        </div>
+        <div class="card__content card__content">
+            <span class="card-subtitle">{{disc.artiste}} [ {{disc.genre}} ]</span>
+            <span class="card-subtitle">{{disc.date | date}}</span>
+
+            <div class="paragraph">
+                <p>
+                    {{disc.description}}
+                </p>
+            </div>
+            <div class="paragraph">
+                <p>
+                    Duration : {{disc.duration}}
+                </p>
+            </div>
+
+            <div class="card__actions">
+                <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>
+                <a class="btn btn--m btn--orange btn--flat" ng-href="#/edit/{{disc.id}}" lx-ripple>Edit</a>
+            </div>
+        </div>
+    </div>
+
+</div>

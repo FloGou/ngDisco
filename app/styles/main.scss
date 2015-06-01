@@ -1,0 +1,35 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "neat/app/assets/stylesheets/_neat.scss";
+// endbower
+
+.album-list {
+  background-color: #ffffff;
+  height: 800px;
+  overflow: scroll
+ // border: 1px solid black;
+}
+
+.album-detail {
+  background-color: #ffffff;
+  //border: 1px solid black;
+}
+
+.card {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#spinner {
+  width: 100px;
+  height: 100px;
+  z-index: 1000;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}

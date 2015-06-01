@@ -1,0 +1,31 @@
+/**
+ * User: 4murs
+ * Date: 16/01/15
+ * Time: 10:15
+ */
+(function(){
+  'use strict';
+  /**
+   * @ngdoc function
+   * @name ngDiscoApp.controller:EditCtrl
+   * @description
+   * # EditCtrl
+   * Controller of the ngDiscoApp
+   */
+  angular.module('ngDiscoApp');
+  /*.controller('EditCtrl', function ($routeParams, $location, discs) {
+      var ctrl = this;
+      discs.get($routeParams.id).success(function(data){
+        ctrl.disc = data;
+      });
+  
+      this.action = function(album){
+        discs.edit(album).success(function(){
+          $location.path('/');
+        });
+      };
+      this.abort = function () {
+        $location.path('/');
+      };
+    });*/
+}).call(this);

@@ -1,0 +1,16 @@
+    <div class="card" style="margin-top:0; margin-bottom:0;" >
+
+        <div class="card__content card__content">
+            <span class="card-subtitle">Genres</span>
+
+            <div class="paragraph">
+                <p>
+                    <button style="margin:1%;" class="btn btn--m btn--raised" ng-class="{'btn--blue': selected.indexOf(genre)>-1}" lx-ripple ng-repeat="genre in filtered | map:'genre'|unique" ng-click=" selected.indexOf(genre)>-1? selected.splice(selected.indexOf(genre), 1 ) : selected.push(genre)">{{genre}}</button>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
